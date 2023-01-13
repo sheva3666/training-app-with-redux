@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
+import { useSelector, useDispatch } from "react-redux";
+import { getTodos } from "./redux/api/todosAPI";
 
 function App() {
+  const { todos, getTodosLoading } = useSelector((state) => state.todos);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getTodos(dispatch);
+  }, []);
+
+  if (getTodosLoading) return <h2>LOADING...</h2>;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {todos.map((todo) => (
+        <h2 key={todo.title}>{todo.title}</h2>
+      ))}
     </div>
   );
 }
