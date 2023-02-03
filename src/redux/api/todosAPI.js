@@ -10,7 +10,7 @@ export const getTodos = async (dispatch) => {
   dispatch(getTodosStart());
 
   const { data } = await axios
-    .get(apiUrl)
+    .get(`${apiUrl}/todos`)
     .catch((error) => dispatch(getTodosError(error)));
   dispatch(getTodosSuccess(data));
 };

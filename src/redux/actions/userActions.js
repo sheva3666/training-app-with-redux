@@ -25,16 +25,22 @@ export const getUserError = (error) => {
   };
 };
 
-export const createUserStart = () => ({
-  type: CREATE_USER_START,
-});
+export const createUserStart = () => {
+  return {
+    type: CREATE_USER_START,
+  };
+};
 
-export const createUserSuccess = (newUser) => ({
-  type: CREATE_USER_SUCCESS,
-  payload: newUser,
-});
+export const createUserSuccess = (newUser) => {
+  return {
+    type: CREATE_USER_SUCCESS,
+    payload: newUser,
+  };
+};
 
-export const createUserError = (error) => ({
-  type: CREATE_USER_ERROR,
-  payload: error,
-});
+export const createUserError = (error) => {
+  return {
+    type: CREATE_USER_ERROR,
+    payload: error,
+  };
+};

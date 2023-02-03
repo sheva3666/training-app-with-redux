@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     getTodos(dispatch);
-  }, []);
+  }, [dispatch]);
 
   if (getTodosLoading) return <h2>LOADING...</h2>;
   return (

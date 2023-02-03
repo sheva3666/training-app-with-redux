@@ -10,7 +10,10 @@ import {
 const initialState = {
   getUsersLoading: false,
   user: [],
-  getUserError: null,
+  getUserError: false,
+  createUserLoading: false,
+  createUserError: null,
+  createUserSuccess: "",
 };
 
 const userReducer = (state = initialState, { type, payload }) => {
@@ -18,37 +21,38 @@ const userReducer = (state = initialState, { type, payload }) => {
     case GET_USER_START:
       return {
         ...state,
-        getTodosLoading: true,
+        getUserLoading: true,
       };
     case GET_USER_SUCCESS:
       return {
         ...state,
-        getTodosLoading: false,
-        getTodosError: null,
+        getUserLoading: false,
+        getUserError: null,
         todos: payload,
       };
     case GET_USER_ERROR:
       return {
         ...state,
-        getTodosLoading: false,
-        getTodosError: true,
+        getUserLoading: false,
+        getUserError: true,
       };
     case CREATE_USER_START:
       return {
         ...state,
-        createTodoLoading: true,
+        createUserLoading: true,
       };
     case CREATE_USER_SUCCESS:
       return {
         ...state,
-        createTodoLoading: false,
-        createTodoError: null,
+        createUserLoading: false,
+        createUserError: null,
+        createUserSuccess: payload,
       };
     case CREATE_USER_ERROR:
       return {
         ...state,
-        createTodoLoading: false,
-        createTodoError: payload,
+        createUserLoading: false,
+        createUserError: payload,
       };
     default:
       return state;

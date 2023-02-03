@@ -18,13 +18,12 @@ export const getUser = async (dispatch, email) => {
   dispatch(getUserSuccess(data));
 };
 
-export const createUser = (newUser) => {
-  return async (dispatch) => {
-    dispatch(createUserStart());
+export const createUser = async (dispatch, newUser) => {
+  dispatch(createUserStart());
 
-    const { data } = await axios
-      .post(`${apiUrl}/users`, newUser)
-      .catch((error) => createUserError(error));
-    dispatch(createUserSuccess(data));
-  };
+  const { data } = await axios
+    .post(`${apiUrl}/users`, newUser)
+    .catch((error) => createUserError(error));
+  dispatch(createUserSuccess(data));
+  console.log("asdasdasd", data);
 };
