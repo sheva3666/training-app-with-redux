@@ -49,6 +49,8 @@ const userReducer = (state = initialState, { type, payload }) => {
         createUserSuccess: payload,
       };
     case CREATE_USER_ERROR:
+      console.log(payload);
+
       return {
         ...state,
         createUserLoading: false,

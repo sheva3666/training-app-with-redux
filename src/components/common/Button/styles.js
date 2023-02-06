@@ -9,4 +9,12 @@ export default createUseStyles((theme) => ({
     color: "#fff",
     cursor: "pointer",
   },
+
+  linkButton: {
+    padding: "10px 5px",
+    border: 0,
+    background: "none",
+    color: "blue",
+    cursor: "pointer",
+  },
 }));

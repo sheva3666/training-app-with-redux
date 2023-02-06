@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import Form from "../../common/Form/Form";
 import { SubmitButton } from "../../common/Button/Button";
 import {
   EmailInput,
   PasswordInput,
   TextInput,
 } from "../../common/Inputs/Inputs";
-import { createUser } from "../../../redux/api/userAPI";
-import useStyles from "./styles";
+import { createUser } from "../../../redux/api/authAPI";
+import { useSelector } from "react-redux";
 
 const RegistrationForm = () => {
+  const { createUserSuccess, createUserLoading, createUserError } = useSelector(
+    (state) => state.auth
+  );
+
   const [newUser, setNewUser] = useState({
     name: "",
     email: "",
     password: "",
   });
 
-  const classes = useStyles();
   const dispatch = useDispatch();
 
   const onChangeName = (value) => {
@@ -33,7 +37,6 @@ const RegistrationForm = () => {
     e.preventDefault();
     createUser(dispatch, newUser);
 
-    // dispatch(createUser(dispatch, newUser));
     console.log("wcwecwec");
     setNewUser({
       name: "",
@@ -43,7 +46,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <form className={classes.form}>
+    <Form>
       <TextInput
         value={newUser.name}
         onChange={onChangeName}
@@ -62,9 +65,14 @@ const RegistrationForm = () => {
         placeholder="Password"
         label="Password"
       />
+      <SubmitButton
+        onClick={addUser}
+        name={createUserLoading ? "Loading..." : "Register"}
+      />
 
-      <SubmitButton onClick={addUser} name="Register" />
-    </form>
+      {createUserSuccess && <p>{createUserSuccess}</p>}
+      {createUserError && <p>{createUserError}</p>}
+    </Form>
   );
 };
 

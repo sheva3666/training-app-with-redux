@@ -10,6 +10,6 @@ export default createUseStyles((theme) => ({
     padding: "10px 15px",
     borderRadius: "10px",
     border: "1px solid #000",
-    maxWidth: 400,
+    mAXWidth: 400,
   },
 }));

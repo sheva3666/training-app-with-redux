@@ -25,5 +25,4 @@ export const createUser = async (dispatch, newUser) => {
     .post(`${apiUrl}/users`, newUser)
     .catch((error) => createUserError(error));
   dispatch(createUserSuccess(data));
-  console.log("asdasdasd", data);
 };

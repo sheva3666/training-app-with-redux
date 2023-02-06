@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
+import { OpenRoute, PrivateRoute } from "./utils/routes";
 import { getTodos } from "./redux/api/todosAPI";
-import UserForms from "./components/UserForms/UserForms";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
 
 function App() {
-  const { todos, getTodosLoading } = useSelector((state) => state.todos);
+  // const { todos, getTodosLoading } = useSelector((state) => state.todos);
 
   const dispatch = useDispatch();
 
@@ -13,14 +15,12 @@ function App() {
     getTodos(dispatch);
   }, [dispatch]);
 
-  if (getTodosLoading) return <h2>LOADING...</h2>;
+  // if (getTodosLoading) return <h2>LOADING...</h2>;
   return (
-    <div className="App">
-      <UserForms />
-      {todos.map((todo) => (
-        <h2 key={todo.title}>{todo.title}</h2>
-      ))}
-    </div>
+    <>
+      <Header />
+      <Routes></Routes>
+    </>
   );
 }
 

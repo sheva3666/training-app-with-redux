@@ -9,3 +9,12 @@ export const SubmitButton = ({ onClick, name }) => {
     </button>
   );
 };
+
+export const LinkButton = ({ onClick, name }) => {
+  const classes = useStyles();
+  return (
+    <button className={classes.linkButton} onClick={onClick}>
+      {name}
+    </button>
+  );
+};
