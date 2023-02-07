@@ -11,9 +11,7 @@ import { getAuth } from "../../../redux/api/authAPI";
 import useStyles from "./styles";
 
 const LoginForm = () => {
-  const { getUserLoading, getUserError, getUserSuccess } = useSelector(
-    (state) => state.user
-  );
+  const { getUserLoading, getUserError } = useSelector((state) => state.user);
   const [loginUser, setLoginUser] = useState({ email: "", password: "" });
 
   const dispatch = useDispatch();

@@ -22,6 +22,6 @@ export const deleteAuth = async (dispatch, authUser) => {
   dispatch(deleteAuthStart());
   await axios
     .delete(`${apiUrl}/auth/${authUser}`)
-    .catch((error) => console.log(error));
+    .catch((error) => deleteAuthError(error));
   dispatch(deleteAuthSuccess());
 };

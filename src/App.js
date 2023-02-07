@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTodos } from "./redux/api/todosAPI";
 import { Routes, Route } from "react-router-dom";
 import { ROUTES } from "./utils/constants";
 import Header from "./components/Header/Header";
@@ -12,13 +11,8 @@ import { getAuth } from "./redux/api/authAPI";
 
 function App() {
   const { auth, getAuthLoading, authUser } = useSelector((state) => state.auth);
-  console.log(authUser);
 
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   console.log(authUser);
-  // }, [authUser]);
 
   useEffect(() => {
     const userEmail = localStorage.getItem("email");

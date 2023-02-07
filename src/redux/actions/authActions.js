@@ -29,26 +29,6 @@ export const getAuthError = (error) => {
   };
 };
 
-export const createAuthStart = () => {
-  return {
-    type: CREATE_AUTH_START,
-  };
-};
-
-export const createAuthSuccess = (authUser) => {
-  return {
-    type: CREATE_AUTH_SUCCESS,
-    payload: authUser,
-  };
-};
-
-export const createAuthError = (error) => {
-  return {
-    type: CREATE_AUTH_ERROR,
-    payload: error,
-  };
-};
-
 export const deleteAuthStart = () => {
   return {
     type: DELETE_AUTH_START,
