@@ -2,9 +2,6 @@ import {
   getAuthError,
   getAuthStart,
   getAuthSuccess,
-  createAuthError,
-  createAuthStart,
-  createAuthSuccess,
   deleteAuthError,
   deleteAuthStart,
   deleteAuthSuccess,
@@ -15,26 +12,16 @@ import { apiUrl } from "../../utils/constants";
 export const getAuth = async (dispatch, id) => {
   dispatch(getAuthStart());
 
-  const { data } = await axios
+  await axios
     .get(`${apiUrl}/auth/${id}`)
+    .then((response) => dispatch(getAuthSuccess(response.data)))
     .catch((error) => dispatch(getAuthError(error)));
-  dispatch(getAuthSuccess(data));
 };
 
-// export const createAuth = async (dispatch, newUser) => {
-//   dispatch(createAuthStart());
-
-//   const { data } = await axios
-//     .post(`${apiUrl}/auth`, newUser)
-//     .catch((error) => createAuthError(error));
-//   dispatch(createAuthSuccess(data));
-// };
-
-export const deleteAuth = async (dispatch, id) => {
+export const deleteAuth = async (dispatch, authUser) => {
   dispatch(deleteAuthStart());
-
   await axios
-    .delete(`${apiUrl}/auth/${id}`)
-    .catch((error) => deleteAuthError(error));
+    .delete(`${apiUrl}/auth/${authUser}`)
+    .catch((error) => console.log(error));
   dispatch(deleteAuthSuccess());
 };

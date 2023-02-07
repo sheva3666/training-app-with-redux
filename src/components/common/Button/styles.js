@@ -27,4 +27,13 @@ export default createUseStyles((theme) => ({
     borderRadius: "10px",
     fontSize: "25px",
   },
+
+  button: {
+    padding: "10px 15px",
+    borderRadius: "10px",
+    border: 0,
+    background: "blue",
+    color: "#fff",
+    cursor: "pointer",
+  },
 }));

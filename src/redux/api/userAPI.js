@@ -12,10 +12,10 @@ import { apiUrl } from "../../utils/constants";
 export const getUser = async (dispatch, email, password) => {
   dispatch(getUserStart());
 
-  const { data } = await axios
+  await axios
     .get(`${apiUrl}/users/${email}/${password}`)
+    .then((data) => dispatch(getUserSuccess(data)))
     .catch((error) => dispatch(getUserError(error)));
-  dispatch(getUserSuccess(data));
 };
 
 export const createUser = async (dispatch, newUser) => {

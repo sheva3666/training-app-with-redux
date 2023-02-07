@@ -1,12 +1,19 @@
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme) => ({
-  formContainer: {
-    marginTop: 30,
+  homePageContainer: {
+    marginTop: 100,
     display: "flex",
     flexDirection: "column",
-    gap: 10,
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
+    gap: "40px",
+  },
+  title: {
+    fontSize: "50px",
+  },
+  buttons: {
+    display: "flex",
+    gap: 30,
   },
 }));

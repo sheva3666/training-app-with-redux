@@ -8,9 +8,10 @@ import {
 } from "../actions/userActions";
 
 const initialState = {
-  getUsersLoading: false,
+  getUserLoading: false,
   user: [],
-  getUserError: false,
+  getUserSuccess: false,
+  getUserError: null,
   createUserLoading: false,
   createUserError: null,
   createUserSuccess: "",
@@ -27,14 +28,16 @@ const userReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         getUserLoading: false,
+        getUserSuccess: true,
         getUserError: null,
-        todos: payload,
+        user: payload,
       };
     case GET_USER_ERROR:
       return {
         ...state,
         getUserLoading: false,
-        getUserError: true,
+        getUserSuccess: false,
+        getUserError: payload,
       };
     case CREATE_USER_START:
       return {
@@ -49,8 +52,6 @@ const userReducer = (state = initialState, { type, payload }) => {
         createUserSuccess: payload,
       };
     case CREATE_USER_ERROR:
-      console.log(payload);
-
       return {
         ...state,
         createUserLoading: false,

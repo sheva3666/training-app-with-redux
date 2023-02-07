@@ -5,7 +5,7 @@ export const CREATE_AUTH_START = "CREATE_AUTH_START";
 export const CREATE_AUTH_SUCCESS = "CREATE_AUTH_SUCCESS";
 export const CREATE_AUTH_ERROR = "CREATE_AUTH_ERROR";
 export const DELETE_AUTH_START = "DELETE_AUTH_START";
-export const DELETE_AUTH_SUCCESS = "CDELETEAUTH_SUCCESS";
+export const DELETE_AUTH_SUCCESS = "DELETE_AUTH_SUCCESS";
 export const DELETE_AUTH_ERROR = "DELETE_AUTH_ERROR";
 
 export const getAuthStart = () => {
@@ -15,6 +15,7 @@ export const getAuthStart = () => {
 };
 
 export const getAuthSuccess = (data) => {
+  console.log("data", data);
   return {
     type: GET_AUTH_SUCCESS,
     payload: data,

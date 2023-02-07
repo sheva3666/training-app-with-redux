@@ -2,9 +2,6 @@ import {
   GET_AUTH_ERROR,
   GET_AUTH_SUCCESS,
   GET_AUTH_START,
-  //   CREATE_AUTH_START,
-  //   CREATE_AUTH_SUCCESS,
-  //   CREATE_AUTH_ERROR,
   DELETE_AUTH_START,
   DELETE_AUTH_SUCCESS,
   DELETE_AUTH_ERROR,
@@ -12,12 +9,9 @@ import {
 
 const initialState = {
   getAuthLoading: false,
-  authUser: [],
+  authUser: "null",
   auth: false,
   getAuthError: false,
-  createAuthLoading: false,
-  createAuthError: null,
-  createAuthSuccess: "",
   deleteAuthLoading: false,
   deleteAuthError: null,
 };
@@ -30,6 +24,7 @@ const authReducer = (state = initialState, { type, payload }) => {
         getAuthLoading: true,
       };
     case GET_AUTH_SUCCESS:
+      console.log(payload);
       return {
         ...state,
         getAuthLoading: false,
@@ -43,25 +38,6 @@ const authReducer = (state = initialState, { type, payload }) => {
         getAuthLoading: false,
         getAuthError: true,
       };
-    // case CREATE_AUTH_START:
-    //   return {
-    //     ...state,
-    //     createAuthLoading: true,
-    //   };
-    // case CREATE_AUTH_SUCCESS:
-    //   return {
-    //     ...state,
-    //     createAuthLoading: false,
-    //     createAuthError: null,
-    //     createAuthSuccess: payload,
-    //     auth: true,
-    //   };
-    // case CREATE_AUTH_ERROR:
-    //   return {
-    //     ...state,
-    //     createAuthLoading: false,
-    //     createAuthError: payload,
-    //   };
     case DELETE_AUTH_START:
       return {
         ...state,

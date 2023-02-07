@@ -11,6 +11,7 @@ export default createUseStyles((theme) => ({
   },
   navigation: {
     display: "flex",
+    alignItems: "center",
     gap: 10,
   },
   link: {
