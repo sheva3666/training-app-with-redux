@@ -17,4 +17,14 @@ export default createUseStyles((theme) => ({
     color: "blue",
     cursor: "pointer",
   },
+
+  bigButton: {
+    padding: "15px 20px",
+    border: 0,
+    background: "blue",
+    color: "#fff",
+    cursor: "pointer",
+    borderRadius: "10px",
+    fontSize: "25px",
+  },
 }));

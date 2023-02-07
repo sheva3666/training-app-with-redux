@@ -2,9 +2,9 @@ import {
   GET_AUTH_ERROR,
   GET_AUTH_SUCCESS,
   GET_AUTH_START,
-  CREATE_AUTH_START,
-  CREATE_AUTH_SUCCESS,
-  CREATE_AUTH_ERROR,
+  //   CREATE_AUTH_START,
+  //   CREATE_AUTH_SUCCESS,
+  //   CREATE_AUTH_ERROR,
   DELETE_AUTH_START,
   DELETE_AUTH_SUCCESS,
   DELETE_AUTH_ERROR,
@@ -32,8 +32,8 @@ const authReducer = (state = initialState, { type, payload }) => {
     case GET_AUTH_SUCCESS:
       return {
         ...state,
-        getUserLoading: false,
-        getUserError: null,
+        getAuthLoading: false,
+        getAuthError: null,
         authUser: payload,
         auth: true,
       };
@@ -43,25 +43,25 @@ const authReducer = (state = initialState, { type, payload }) => {
         getAuthLoading: false,
         getAuthError: true,
       };
-    case CREATE_AUTH_START:
-      return {
-        ...state,
-        createAuthLoading: true,
-      };
-    case CREATE_AUTH_SUCCESS:
-      return {
-        ...state,
-        createAuthLoading: false,
-        createAuthError: null,
-        createAuthSuccess: payload,
-        auth: true,
-      };
-    case CREATE_AUTH_ERROR:
-      return {
-        ...state,
-        createAuthLoading: false,
-        createAuthError: payload,
-      };
+    // case CREATE_AUTH_START:
+    //   return {
+    //     ...state,
+    //     createAuthLoading: true,
+    //   };
+    // case CREATE_AUTH_SUCCESS:
+    //   return {
+    //     ...state,
+    //     createAuthLoading: false,
+    //     createAuthError: null,
+    //     createAuthSuccess: payload,
+    //     auth: true,
+    //   };
+    // case CREATE_AUTH_ERROR:
+    //   return {
+    //     ...state,
+    //     createAuthLoading: false,
+    //     createAuthError: payload,
+    //   };
     case DELETE_AUTH_START:
       return {
         ...state,

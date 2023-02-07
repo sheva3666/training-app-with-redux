@@ -9,11 +9,11 @@ import {
 import axios from "axios";
 import { apiUrl } from "../../utils/constants";
 
-export const getUser = async (dispatch, email) => {
+export const getUser = async (dispatch, email, password) => {
   dispatch(getUserStart());
 
   const { data } = await axios
-    .get(`${apiUrl}/users/${email}`)
+    .get(`${apiUrl}/users/${email}/${password}`)
     .catch((error) => dispatch(getUserError(error)));
   dispatch(getUserSuccess(data));
 };

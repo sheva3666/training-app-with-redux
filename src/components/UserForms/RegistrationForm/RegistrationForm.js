@@ -7,7 +7,7 @@ import {
   PasswordInput,
   TextInput,
 } from "../../common/Inputs/Inputs";
-import { createUser } from "../../../redux/api/authAPI";
+import { createUser } from "../../../redux/api/userAPI";
 import { useSelector } from "react-redux";
 
 const RegistrationForm = () => {

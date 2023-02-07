@@ -18,3 +18,12 @@ export const LinkButton = ({ onClick, name }) => {
     </button>
   );
 };
+
+export const BigButton = ({ onClick, name }) => {
+  const classes = useStyles();
+  return (
+    <button className={classes.bigButton} onClick={onClick}>
+      {name}
+    </button>
+  );
+};
