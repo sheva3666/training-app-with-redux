@@ -7,6 +7,7 @@ import rootReducer from "./redux/reducers";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "@ui5/webcomponents-react";
 
 const store = createStore(
   rootReducer,
@@ -19,8 +20,10 @@ const store = createStore(
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <App />
+      </Router>
+    </ThemeProvider>
   </Provider>
 );

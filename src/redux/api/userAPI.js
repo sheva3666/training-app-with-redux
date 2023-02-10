@@ -6,6 +6,7 @@ import {
   createUserStart,
   createUserSuccess,
 } from "../actions/userActions";
+import { getAuth } from "./authAPI";
 import axios from "axios";
 import { apiUrl } from "../../utils/constants";
 
@@ -15,7 +16,8 @@ export const getUser = async (dispatch, email, password) => {
   await axios
     .get(`${apiUrl}/users/${email}/${password}`)
     .then((data) => dispatch(getUserSuccess(data)))
-    .catch((error) => dispatch(getUserError(error)));
+    .catch((error) => dispatch(getUserError(error.response.data)));
+  getAuth(dispatch, email);
 };
 
 export const createUser = async (dispatch, newUser) => {

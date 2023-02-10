@@ -7,7 +7,6 @@ import { EmailInput, PasswordInput } from "../../common/Inputs/Inputs";
 import { getUser } from "../../../redux/api/userAPI";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../utils/constants";
-import { getAuth } from "../../../redux/api/authAPI";
 import useStyles from "./styles";
 
 const LoginForm = () => {
@@ -18,15 +17,15 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const classes = useStyles();
 
-  const onLogin = (loginUser) => {
-    getUser(dispatch, loginUser.email, loginUser.password).then(
-      getAuth(dispatch, loginUser.email)
-    );
-
+  const isAuth = () => {
     if (!getUserLoading && !getUserError) {
       localStorage.setItem("email", loginUser.email);
       navigate(ROUTES.todos);
     }
+  };
+
+  const onLogin = (loginUser) => {
+    getUser(dispatch, loginUser.email, loginUser.password).then(isAuth());
   };
 
   return (
@@ -50,7 +49,7 @@ const LoginForm = () => {
           <SubmitButton onClick={() => onLogin(loginUser)} name={"Login"} />
         )}
       </Form>
-      {getUserError && <p>{getUserError.response.data}</p>}
+      {getUserError && <p>{getUserError}</p>}
       <p>
         Whether you don't have account yet, please{" "}
         <Link to="/register">Register</Link>

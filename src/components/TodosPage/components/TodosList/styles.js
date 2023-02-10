@@ -1,12 +1,15 @@
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme) => ({
-  todosPageContainer: {
-    marginTop: 100,
+  todosForm: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     gap: "40px",
+  },
+  formContainer: {
+    display: "flex",
+    gap: "15px",
   },
 }));
