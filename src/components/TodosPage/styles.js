@@ -8,5 +8,6 @@ export default createUseStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     gap: "40px",
+    width: "100%",
   },
 }));

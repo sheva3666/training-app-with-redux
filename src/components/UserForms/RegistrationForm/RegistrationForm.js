@@ -50,7 +50,7 @@ const RegistrationForm = () => {
 
   return (
     <div className={classes.formContainer}>
-      <Form>
+      <Form onSubmit={(e) => addUser(e)}>
         <TextInput
           value={newUser.name}
           onChange={onChangeName}
@@ -69,10 +69,7 @@ const RegistrationForm = () => {
           placeholder="Password"
           label="Password"
         />
-        <SubmitButton
-          onClick={addUser}
-          name={createUserLoading ? "Loading..." : "Register"}
-        />
+        <SubmitButton name={createUserLoading ? "Loading..." : "Register"} />
 
         {createUserSuccess && (
           <p>

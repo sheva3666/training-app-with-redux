@@ -9,7 +9,7 @@ const TodosForm = () => {
   const [newTodo, setNewTodo] = useState({
     userId: localStorage.getItem("email"),
     title: "",
-    status: STATUSES[0],
+    status: STATUSES[0].value,
   });
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -19,7 +19,6 @@ const TodosForm = () => {
   };
 
   const addTodo = async () => {
-    console.log(newTodo);
     createTodo(newTodo, dispatch).then(setNewTodo({ ...newTodo, title: "" }));
   };
 

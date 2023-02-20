@@ -10,6 +10,7 @@ import {
 const initialState = {
   getUserLoading: false,
   user: [],
+  authUser: null,
   getUserSuccess: false,
   getUserError: null,
   createUserLoading: false,

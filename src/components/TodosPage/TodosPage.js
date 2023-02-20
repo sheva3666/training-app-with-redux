@@ -5,12 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTodos } from "../../redux/api/todosAPI";
 import TodosForm from "./components/TodosForm/TodosForm";
 import TodosList from "./components/TodosList/TodosList";
+import TodosTable from "./components/TodosTable/TodosTable";
 import useStyles from "./styles";
 
 const TodosPage = ({ isAuth }) => {
-  const { todos, getTodosLoading, getTodosError } = useSelector(
-    (state) => state.todos
-  );
+  const { todos, getTodosLoading } = useSelector((state) => state.todos);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -27,11 +26,7 @@ const TodosPage = ({ isAuth }) => {
   return (
     <div className={classes.todosPageContainer}>
       <TodosForm />
-      <TodosList
-        todos={todos}
-        getTodosLoading={getTodosLoading}
-        getTodosError={getTodosError}
-      />
+      {getTodosLoading ? <h2>Loading...</h2> : <TodosTable todos={todos} />}
     </div>
   );
 };

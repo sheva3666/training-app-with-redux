@@ -75,7 +75,7 @@ const todosReducer = (state = initialState, { type, payload }) => {
         updateTodoLoading: false,
         updateTodoError: null,
         todos: state.todos.map((todo) => {
-          if (todo._id === payload._id) return payload;
+          if (todo.id === payload.id) return payload;
           return todo;
         }),
       };

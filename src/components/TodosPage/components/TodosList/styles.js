@@ -1,15 +1,18 @@
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme) => ({
-  todosForm: {
+  todosList: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     gap: "40px",
   },
-  formContainer: {
+
+  listItem: {
+    minWidth: 600,
     display: "flex",
-    gap: "15px",
+    alignItems: "center",
+    justifyContent: "center",
   },
 }));

@@ -26,7 +26,6 @@ export const getTodos = async (dispatch) => {
 };
 
 export const createTodo = async (newTodo, dispatch) => {
-  console.log("create todo");
   dispatch(createTodoStart());
 
   await axios
@@ -36,18 +35,14 @@ export const createTodo = async (newTodo, dispatch) => {
   getTodos(dispatch);
 };
 
-export const updateTodo =
-  ({ id, key, value }) =>
-  async (dispatch) => {
-    dispatch(updateTodoStart());
+export const updateTodo = async (id, updatedTodo, dispatch) => {
+  dispatch(updateTodoStart());
 
-    await axios
-      .put(`${apiUrl}/todos/${id}/`, {
-        [key]: value,
-      })
-      .then((data) => dispatch(updateTodoSuccess(data.updatedTodo)))
-      .catch((response) => dispatch(updateTodoError(response.data)));
-  };
+  const { data } = await axios
+    .put(`${apiUrl}/todos/${id}`, updatedTodo)
+    .catch((response) => console.log(response));
+  dispatch(updateTodoSuccess(data));
+};
 
 export const deleteTodo = (id, queryObject) => async (dispatch) => {
   dispatch(deleteTodoStart());

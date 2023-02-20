@@ -5,6 +5,7 @@ import { SubmitButton } from "../../common/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { EmailInput, PasswordInput } from "../../common/Inputs/Inputs";
 import { getUser } from "../../../redux/api/userAPI";
+import { getAuth } from "../../../redux/api/authAPI";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../utils/constants";
 import useStyles from "./styles";
@@ -17,20 +18,17 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const classes = useStyles();
 
-  const isAuth = () => {
-    if (!getUserLoading && !getUserError) {
-      localStorage.setItem("email", loginUser.email);
-      navigate(ROUTES.todos);
-    }
-  };
-
-  const onLogin = (loginUser) => {
-    getUser(dispatch, loginUser.email, loginUser.password).then(isAuth());
+  const onLogin = (loginUser, e) => {
+    e.preventDefault();
+    getUser(dispatch, loginUser.email, loginUser.password).then(
+      !getUserError && localStorage.setItem("email", loginUser.email)
+    );
+    getAuth(dispatch, loginUser);
   };
 
   return (
     <div className={classes.formContainer}>
-      <Form>
+      <Form onSubmit={(e) => onLogin(loginUser, e)}>
         <EmailInput
           label="Email"
           placeholder="Email"
@@ -43,11 +41,7 @@ const LoginForm = () => {
           value={loginUser.password}
           onChange={(value) => setLoginUser({ ...loginUser, password: value })}
         />
-        {getUserLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <SubmitButton onClick={() => onLogin(loginUser)} name={"Login"} />
-        )}
+        {getUserLoading ? <p>Loading...</p> : <SubmitButton name={"Login"} />}
       </Form>
       {getUserError && <p>{getUserError}</p>}
       <p>

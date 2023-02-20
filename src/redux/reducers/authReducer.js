@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   getAuthLoading: false,
-  authUser: "null",
+  authUser: null,
   auth: false,
   getAuthError: false,
   deleteAuthLoading: false,
@@ -24,12 +24,11 @@ const authReducer = (state = initialState, { type, payload }) => {
         getAuthLoading: true,
       };
     case GET_AUTH_SUCCESS:
-      console.log(payload);
       return {
         ...state,
         getAuthLoading: false,
         getAuthError: null,
-        authUser: payload,
+        authUser: payload.id,
         auth: true,
       };
     case GET_AUTH_ERROR:
