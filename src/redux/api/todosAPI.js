@@ -8,7 +8,6 @@ import {
   getTodosError,
   getTodosStart,
   getTodosSuccess,
-  updateTodoError,
   updateTodoStart,
   updateTodoSuccess,
 } from "../actions/todosActions";
@@ -44,12 +43,12 @@ export const updateTodo = async (id, updatedTodo, dispatch) => {
   dispatch(updateTodoSuccess(data));
 };
 
-export const deleteTodo = (id, queryObject) => async (dispatch) => {
+export const deleteTodo = async (id, dispatch) => {
   dispatch(deleteTodoStart());
 
   await axios
-    .delete(`${apiUrl}/todos/${id}/`)
+    .delete(`${apiUrl}/todos/${id}`)
     .then(dispatch(deleteTodoSuccess(id)))
-    .then(dispatch(getTodos(queryObject)))
     .catch((response) => dispatch(deleteTodoError(response.data)));
+  getTodos(dispatch);
 };

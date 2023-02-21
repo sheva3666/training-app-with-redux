@@ -4,7 +4,6 @@ import { ROUTES } from "../../utils/constants";
 import { useSelector, useDispatch } from "react-redux";
 import { getTodos } from "../../redux/api/todosAPI";
 import TodosForm from "./components/TodosForm/TodosForm";
-import TodosList from "./components/TodosList/TodosList";
 import TodosTable from "./components/TodosTable/TodosTable";
 import useStyles from "./styles";
 
@@ -13,6 +12,7 @@ const TodosPage = ({ isAuth }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const classes = useStyles();
+
   useEffect(() => {
     if (!isAuth) {
       navigate(ROUTES.home);

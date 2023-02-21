@@ -3,7 +3,7 @@ import StatusSelect from "../../../common/StatusSelect/StatusSelect";
 import TableSortable from "../../../common/Table/TableSortable";
 import { compact } from "lodash";
 import { useDispatch } from "react-redux";
-
+import ActionCell from "./components/ActionCell/ActionCell";
 import { Text } from "@ui5/webcomponents-react";
 import { updateTodo } from "../../../../redux/api/todosAPI";
 
@@ -18,7 +18,7 @@ const onChangeStatus = (id, title, value, dispatch) => {
   updateTodo(id, updatedTodo, dispatch);
 };
 
-const createTableHeader = ({ dispatch }) =>
+const createTableHeader = ({ dispatch, editMode, updatedTodoName }) =>
   compact([
     {
       name: "Name",
@@ -39,14 +39,27 @@ const createTableHeader = ({ dispatch }) =>
         );
       },
     },
+    {
+      name: "Actions",
+      id: "actions",
+      cellRenderer: (todo) => (
+        <ActionCell
+          editMode={editMode}
+          updatedTodoName={updatedTodoName}
+          todo={todo}
+        />
+      ),
+    },
   ]);
 
 const TodosTable = ({ todos }) => {
   const dispatch = useDispatch();
-  const tableHeader = createTableHeader({ dispatch });
+  const tableHeader = createTableHeader({
+    dispatch,
+  });
 
   return (
-    <div style={{ width: "500px" }}>
+    <div style={{ width: "1000px" }}>
       <TableSortable tableData={todos} tableHeader={tableHeader} />
     </div>
   );

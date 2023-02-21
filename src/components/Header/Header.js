@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/constants";
 import useStyles from "./styles";
 
-const Header = ({ isAuth, authUser, dispatch }) => {
+const Header = ({ isAuth, dispatch }) => {
   const navigate = useNavigate();
   const classes = useStyles();
-  console.log(authUser);
 
   const onLogout = () => {
-    localStorage.removeItem("email");
+    const authUser = localStorage.getItem("email");
     deleteAuth(dispatch, authUser);
+    localStorage.removeItem("email");
     navigate(ROUTES.home);
   };
   return (

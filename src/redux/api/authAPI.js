@@ -10,6 +10,7 @@ import axios from "axios";
 import { apiUrl } from "../../utils/constants";
 
 export const getAuth = async (dispatch, id) => {
+  console.log(id);
   dispatch(getAuthStart());
 
   await axios
